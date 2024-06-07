@@ -1,15 +1,15 @@
 <template>
-  
+
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
 
       <!-- Spinner -->
-      <div class="col-12 mb-4" v-if="showSpinner">
+      <div class="col-12" v-if="showSpinner">
         <SpinnerLoading></SpinnerLoading>
       </div>
 
       <!-- Card -->
-      <div class="card">
+      <div class="card" v-if="!showSpinner">
 
         <div class="col-12">
           <h3>Lista de tarefas</h3>
@@ -42,14 +42,12 @@
   import InputAddForm from './components/InputAddForm.vue'
   import ListItens from './components/ListItens.vue'
   import ItemEmpty from './components/ItemEmpty.vue'
-  import axios from 'axios'
 
   export default {
     name: 'App',
 
     data() {
       return {
-        urlBase: 'http://localhost:3000/',
         showSpinner: false,
       };
     },
@@ -63,16 +61,10 @@
 
     created(){
       this.showSpinner = true;
-
-      axios.get(`${this.urlBase}todos`)
-      .then((responseToDos) => {
-        this.$store.commit('storeTodos', responseToDos.data)
-      })
-      .finally(
-        setTimeout(() => {
+      this.$store.dispatch('getTodos');
+      setTimeout(() => {
         this.showSpinner = false;
-      }, 2000)
-      );
+      }, 2000);
     },
 
   }
