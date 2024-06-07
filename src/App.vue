@@ -1,5 +1,5 @@
 <template>
-
+  
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <!-- Card -->
@@ -48,7 +48,6 @@
     data() {
       return {
         urlBase: 'http://localhost:3000/',
-        toDoList: [],
       };
     },
 
@@ -59,8 +58,10 @@
       ItemEmpty
     },
 
-    async created(){
-      this.toDoList = await axios.get(`${this.urlBase}todos`).then(responseToDos => responseToDos.data);
+    created(){
+      axios.get(`${this.urlBase}todos`).then((responseToDos) => {
+        this.$store.commit('storeTodos', responseToDos.data)
+      });
     },
 
   }
