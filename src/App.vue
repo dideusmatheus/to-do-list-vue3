@@ -21,6 +21,11 @@
           <div class="col-12">
             <ListItens></ListItens>
           </div>
+
+          <!-- Item Empty -->
+          <div class="col-12">
+            <ItemEmpty></ItemEmpty>
+          </div>
           
         </div>
       </div>
@@ -34,13 +39,15 @@
   import SpinnerLoading from './components/SpinnerLoading.vue'
   import InputAddForm from './components/InputAddForm.vue'
   import ListItens from './components/ListItens.vue'
+  import ItemEmpty from './components/ItemEmpty.vue'
 
   export default {
     name: 'App',
     components: {
       SpinnerLoading,
       InputAddForm,
-      ListItens
+      ListItens,
+      ItemEmpty
     }
   }
 </script>
