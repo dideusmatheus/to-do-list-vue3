@@ -1,33 +1,34 @@
 <template>
-  
+
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
       <!-- Card -->
       <div class="card">
 
-        <div class="row">
-
-          <!-- Spinner -->
-          <div class="col-12 mb-4">
-            <SpinnerLoading></SpinnerLoading>
-          </div>
-
-          <!-- Form -->
-          <div class="col-12">
-            <InputAddForm></InputAddForm>
-          </div>
-
-          <!-- List Itens To Do -->
-          <div class="col-12">
-            <ListItens></ListItens>
-          </div>
-
-          <!-- Item Empty -->
-          <div class="col-12">
-            <ItemEmpty></ItemEmpty>
-          </div>
-          
+        <div class="col-12">
+          <h3>Lista de tarefas</h3>
         </div>
+
+        <!-- Spinner -->
+        <div class="col-12 mb-4" v-if="showSpinner">
+          <SpinnerLoading></SpinnerLoading>
+        </div>
+
+        <!-- Form -->
+        <div class="col-12">
+          <InputAddForm></InputAddForm>
+        </div>
+
+        <!-- List Itens To Do -->
+        <div class="col-12" v-if="$store.state.todos.length > 0">
+          <ListItens></ListItens>
+        </div>
+
+        <!-- Item Empty -->
+        <div class="col-12" v-else-if="$store.state.todos.length == 0">
+          <ItemEmpty></ItemEmpty>
+        </div>
+
       </div>
 
     </div>
@@ -48,6 +49,7 @@
     data() {
       return {
         urlBase: 'http://localhost:3000/',
+        showSpinner: false,
       };
     },
 
@@ -59,9 +61,17 @@
     },
 
     created(){
-      axios.get(`${this.urlBase}todos`).then((responseToDos) => {
+      this.showSpinner = true;
+
+      axios.get(`${this.urlBase}todos`)
+      .then((responseToDos) => {
         this.$store.commit('storeTodos', responseToDos.data)
-      });
+      })
+      .finally(
+        setTimeout(() => {
+        this.showSpinner = false;
+      }, 2000)
+      );
     },
 
   }
