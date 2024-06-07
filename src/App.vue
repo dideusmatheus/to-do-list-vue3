@@ -1,17 +1,18 @@
 <template>
-
+  
   <div class="row">
     <div class="col-12 d-flex justify-content-center">
+
+      <!-- Spinner -->
+      <div class="col-12 mb-4" v-if="showSpinner">
+        <SpinnerLoading></SpinnerLoading>
+      </div>
+
       <!-- Card -->
       <div class="card">
 
         <div class="col-12">
           <h3>Lista de tarefas</h3>
-        </div>
-
-        <!-- Spinner -->
-        <div class="col-12 mb-4" v-if="showSpinner">
-          <SpinnerLoading></SpinnerLoading>
         </div>
 
         <!-- Form -->
