@@ -7,14 +7,19 @@
 
         <div class="row">
 
+          <!-- Spinner -->
           <div class="col-12 mb-4">
-            <!-- Spinner -->
             <SpinnerLoading></SpinnerLoading>
           </div>
 
+          <!-- Form -->
           <div class="col-12">
-            <!-- Form -->
             <InputAddForm></InputAddForm>
+          </div>
+
+          <!-- List Itens To Do -->
+          <div class="col-12">
+            <ListItens></ListItens>
           </div>
           
         </div>
@@ -28,12 +33,14 @@
 <script>
 import SpinnerLoading from './components/SpinnerLoading.vue'
 import InputAddForm from './components/InputAddForm.vue'
+import ListItens from './components/ListItens.vue'
 
 export default {
   name: 'App',
   components: {
     SpinnerLoading,
-    InputAddForm
+    InputAddForm,
+    ListItens
   }
 }
 </script>
