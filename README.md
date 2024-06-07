@@ -5,9 +5,19 @@
 npm install
 ```
 
+## API setup
+```
+npm install json-server
+```
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
+```
+
+### Enter the api folder
+```
+json-server --watch database.json
 ```
 
 ### Compiles and minifies for production
