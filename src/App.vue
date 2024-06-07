@@ -31,18 +31,18 @@
 </template>
 
 <script>
-import SpinnerLoading from './components/SpinnerLoading.vue'
-import InputAddForm from './components/InputAddForm.vue'
-import ListItens from './components/ListItens.vue'
+  import SpinnerLoading from './components/SpinnerLoading.vue'
+  import InputAddForm from './components/InputAddForm.vue'
+  import ListItens from './components/ListItens.vue'
 
-export default {
-  name: 'App',
-  components: {
-    SpinnerLoading,
-    InputAddForm,
-    ListItens
+  export default {
+    name: 'App',
+    components: {
+      SpinnerLoading,
+      InputAddForm,
+      ListItens
+    }
   }
-}
 </script>
 
 <style>

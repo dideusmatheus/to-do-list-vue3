@@ -5,8 +5,8 @@
 </template>
 
 <style>
-.spinner-border{
-    width: 5rem;
-    height: 5rem;
-}
+    .spinner-border{
+        width: 5rem;
+        height: 5rem;
+    }
 </style>
