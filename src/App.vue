@@ -11,22 +11,29 @@
             <!-- Spinner -->
             <SpinnerLoading></SpinnerLoading>
           </div>
+
+          <div class="col-12">
+            <!-- Form -->
+            <InputAddForm></InputAddForm>
+          </div>
           
         </div>
       </div>
 
     </div>
-  </div> 
+  </div>
 
 </template>
 
 <script>
 import SpinnerLoading from './components/SpinnerLoading.vue'
+import InputAddForm from './components/InputAddForm.vue'
 
 export default {
   name: 'App',
   components: {
     SpinnerLoading,
+    InputAddForm
   }
 }
 </script>
