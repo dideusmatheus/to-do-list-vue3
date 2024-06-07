@@ -40,15 +40,29 @@
   import InputAddForm from './components/InputAddForm.vue'
   import ListItens from './components/ListItens.vue'
   import ItemEmpty from './components/ItemEmpty.vue'
+  import axios from 'axios'
 
   export default {
     name: 'App',
+
+    data() {
+      return {
+        urlBase: 'http://localhost:3000/',
+        toDoList: [],
+      };
+    },
+
     components: {
       SpinnerLoading,
       InputAddForm,
       ListItens,
       ItemEmpty
-    }
+    },
+
+    async created(){
+      this.toDoList = await axios.get(`${this.urlBase}todos`).then(responseToDos => responseToDos.data);
+    },
+
   }
 </script>
 
