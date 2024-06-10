@@ -13,7 +13,7 @@ export default createStore({
         storeTodos(state, payload){
             state.todos = payload;
         },
-        updateTodos(state, payload){
+        updateListTodos(state, payload){
             state.todos.unshift(payload);
         }
     },
@@ -28,8 +28,11 @@ export default createStore({
         addToDo({ commit }, data){
             return axios.post(`${this.state.urlBase}todos`, data)
             .then((response) => {
-                commit('updateTodos', response.data);
+                commit('updateListTodos', response.data);
             });
-        }
+        },
+        updateToDo(context, {id, data}){
+            return axios.put(`${this.state.urlBase}todos/${id}`, data);
+        },
     }
 })
