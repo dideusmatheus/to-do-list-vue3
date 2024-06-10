@@ -14,7 +14,12 @@ export default createStore({
             state.todos = payload;
         },
         updateListTodos(state, payload){
-            state.todos.unshift(payload);
+            const index = state.todos.findIndex( todos => todos.id === payload.id);
+            if(index >= 0 ){
+                state.todos.splice(index, 1, payload);
+            }else {
+                state.todos.unshift(payload);
+            }
         }
     },
 
@@ -31,8 +36,11 @@ export default createStore({
                 commit('updateListTodos', response.data);
             });
         },
-        updateToDo(context, {id, data}){
-            return axios.put(`${this.state.urlBase}todos/${id}`, data);
+        updateToDo({ commit }, {id, data}){
+            return axios.put(`${this.state.urlBase}todos/${id}`, data)
+            .then((response) => {
+                commit('updateListTodos', response.data);
+            });
         },
     }
 })
